@@ -6,12 +6,12 @@
 <i>Stanford - Spring 2021</i>
 </center>
 
-> ## About
+## About
 ---
 ### Overview
 These are my solutions for the **CS231n** course assignemnts offered by Stanford University (Spring 2021). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
 
-* _**!Note:** currently, only solutions for the first 2 assignemnts are done._
+> **!Note:** currently, only solutions for the first 2 assignemnts are done.
 
 ### Main sources (official)
 * [**Course page**](http://cs231n.stanford.edu/index.html)
@@ -22,7 +22,7 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 ### Additional references (helper)
 * Additional references are yet to be added...
 
-> ## Solutions
+## Solutions
 ---
 ### Assignment 1
 * [Q1](assignment1/knn.ipynb): k-Nearest Neighbor classifier. (_Done_)
@@ -42,7 +42,7 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 ### Assignment 3
 * Solutions for assignemnt 3 are yet to be added...
 
-> ## Examples
+## Examples
 ---
 ### Inline Questions
 
