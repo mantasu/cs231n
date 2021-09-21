@@ -32,8 +32,8 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 * [Q2](assignment2/BatchNormalization.ipynb): Batch Normalization. (_Done_)
 * [Q3](assignment2/Dropout.ipynb): Dropout. (_Done_)
 * [Q4](assignment2/ConvolutionalNetworks.ipynb): Convolutional Networks. (_Done_)
-* [Q5](assignment2/TensorFlow.ipynb) _option 1_: PyTorch on CIFAR-10. (_Done_)
-* [Q5](assignment2/PyTorch.ipynb) _option 2_: TensorFlow on CIFAR-10. (_Done_)
+* [Q5](assignment2/PyTorch.ipynb) _option 1_: PyTorch on CIFAR-10. (_Done_)
+* [Q5](assignment2/TensorFlow.ipynb) _option 2_: TensorFlow on CIFAR-10. (_Done_)
 
 ### Assignment 3
 * Solutions for assignemnt 3 are yet to be added...
@@ -41,8 +41,8 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 <br>
 
 ## Examples
-### Inline question example
-
+<details><summary><b>Inline quastion example</b></summary>
+<br>
 <b>Inline Question 1</b>
 
 <hr>
@@ -83,8 +83,9 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
     </ul>
 </ol>
 <hr>
+</details>
 
-### Python code example
+<details><summary><b>Python code example</b></summary>
 <sub>
 
 ```python
@@ -148,3 +149,4 @@ def conv_forward_naive(x, w, b, conv_param):
 ```
 
 </sub>
+</details>
