@@ -41,7 +41,7 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 <br>
 
 ## Examples
-<details><summary><b>Inline quastion example</b></summary>
+<details><summary><b>Inline question example</b></summary>
 <br>
 <b>Inline Question 1</b>
 
