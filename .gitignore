@@ -1,0 +1,19 @@
+# Env
+venv
+
+# Python
+__pycache__
+.ipynb_checkpoints
+
+# Assignment 1 generated
+assignment1/cs231n/datasets/cifar-10-batches-py
+assignment1/a1.zip
+assignment1/assignment.pdf
+
+# Assignment 2 generated
+assignment2/cs231n/build
+assignment2/cs231n/datasets/cifar-10-batches-py
+assignment2/a2.zip
+assignment2/assignment.pdf
+
+# Assignment 3 generated

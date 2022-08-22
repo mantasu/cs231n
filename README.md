@@ -4,9 +4,9 @@
 
 ## About
 ### Overview
-These are my solutions for the **CS231n** course assignemnts offered by Stanford University (Spring 2021). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
+These are my solutions for the **CS231n** course assignments offered by Stanford University (Spring 2021). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
 
-> **Note:** currently, only solutions for the first 2 assignemnts are done.
+> Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. From what I checked, they contain more comprehensive explanations than others.
 
 ### Main sources (official)
 * [**Course page**](http://cs231n.stanford.edu/index.html)
@@ -36,7 +36,10 @@ These are my solutions for the **CS231n** course assignemnts offered by Stanford
 * [Q5](assignment2/TensorFlow.ipynb) _option 2_: TensorFlow on CIFAR-10. (_Done_)
 
 ### Assignment 3
-* Solutions for assignemnt 3 are yet to be added...
+* [Q1](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs (_Done_)
+* [Q2](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers (_Done_)
+
+> I will upload assignment 3 solutions soon!
 
 <br>
 
