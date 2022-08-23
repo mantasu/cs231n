@@ -38,6 +38,7 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 ### Assignment 3
 * [Q1](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs (_Done_)
 * [Q2](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers (_Done_)
+* [Q3](assignment3/Generative_Adversarial_Networks.ipynb): Generative Adversarial Networks (_Done_)
 
 > I will upload assignment 3 solutions soon!
 
