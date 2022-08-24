@@ -56,33 +56,36 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 <b>Your Answer</b>
 
 <hr>
-<sub><p align="justify">
 
+<sub>
 First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form $\max(0, -)$. For <code>1D</code> case, we can define it as follows ($\hat y$ - score, $i$ - any class, $c$ - correct class, $\Delta$ - margin):
-    
+</sub>
+
+<sub>
 $$f(x)=\max(0, x),\ \text{ where } x=\hat{y}_i-\hat{y}_c+\Delta$$
+</sub>
 
+<sub>
 Let's now see how our $\max$ function fits the definition of computing the gradient. It is the formula we use for computing the gradient <i>numerically</i> when, instead of implementing the limit approaching to $0$, we choose some arbitrary small $h$:
+</sub>
 
+<sub>
 $$\frac{df(x)}{dx}=\lim_{h \to 0}\frac{\max(0,x+h)-\max(0,x)}{h}$$
+</sub>
 
+<sub>
 Now we can talk about the possible mismatches between <i>numeric</i> and <i>analytic</i> gradient computation:
+</sub>
 
-1. <b>Cause of mismatch</b>
-    * <i>Relative error</i> - the discrepancy is caused due to arbitrary choice of small values of $h$ because by definition it should approach <code>0</code>.<i>Analytic</i> computation produces an exact result (as precise as computation precision allows) while <i>numeric</i> solution only approximates the result.
-
-    * <i>Kinks</i> - $\max$ only has a subgradient because when both values in $\max$ are equal, its gradient is undefined, therefore, not smooth. Such parts, referred to as <i>kinks</i>, may cause <i>numeric</i> gradient to produce different results from <i>analytic</i> computation due to (again) arbitrary choice of $h$.
-
-2. <b>Concerns</b>
-    * When comparing <i>analytic</i> and <i>numeric</i> methods, <i>kinks</i> are more dangerous than small inaccuracies where the gradient is smooth. Small derivative inaccuracies still change the weight by approximately the same amount but <i>kinks</i> may cause unintentional updates as seen in an example below. If the unintentional values would have a noticeable affect on parameter updates, it is a reason for concern.
-
-3. <b><code>1D</code> example of numeric gradient fail</b>
-    * Assume $x=-10^{-9}$. Then the <i>analytic</i> computation of the derivative of $\max(0, x)$ would yield <code>0</code>. However, if we choose our $h=10^{-8}$, then the <i>numeric</i> computation would yield <code>0.9</code>.
-
-4. <b>Relation between margin and mismatch</b></li></sub>
-    * Assuming all other parameters remain <b>unchanged</b>, increasing $\Delta$ will lower the frequency of <i>kinks</i>. This is because higher $\Delta$ will cause more $x$ to be positive, thus reducing the probability of kinks. In reality though, it would not have a big effect - if we increase the margin $\Delta$, the <b>SVM</b> will only learn to increase the (negative) gap between $\hat y_i - \hat y_c$ and <code>0</code> (when $i\ne c$). But that still means, if we add $\Delta$, there is the same chance for $x$ to result on the edge.
-
-</p></sub>
+1. <sub>**Cause of mismatch** </sub>
+    * <sub> _Relative error_ - the discrepancy is caused due to arbitrary choice of small values of $h$ because by definition it should approach `0`. _Analytic_ computation produces an exact result (as precise as computation precision allows) while _numeric_ solution only approximates the result. </sub>
+    * <sub> _Kinks_ - $\max$ only has a subgradient because when both values in $\max$ are equal, its gradient is undefined, therefore, not smooth. Such parts, referred to as _kinks_, may cause _numeric_ gradient to produce different results from _analytic_ computation due to (again) arbitrary choice of $h$. </sub>
+2. <sub> **Concerns** </sub>
+    * <sub> When comparing _analytic_ and _numeric_ methods, _kinks_ are more dangerous than small inaccuracies where the gradient is smooth. Small derivative inaccuracies still change the weight by approximately the same amount but _kinks_ may cause unintentional updates as seen in an example below. If the unintentional values would have a noticeable affect on parameter updates, it is a reason for concern. </sub>
+3. <sub> **`1D` example of numeric gradient fail** </sub>
+    * <sub> Assume $x=-10^{-9}$. Then the _analytic_ computation of the derivative of $\max(0, x)$ would yield `0`. However, if we choose our $h=10^{-8}$, then the _numeric_ computation would yield `0.9`. </sub>
+4. <sub> **Relation between margin and mismatch** </sub>
+    * <sub> Assuming all other parameters remain **unchanged**, increasing $\Delta$ will lower the frequency of _kinks_. This is because higher $\Delta$ will cause more $x$ to be positive, thus reducing the probability of kinks. In reality though, it would not have a big effect - if we increase the margin $\Delta$, the **SVM** will only learn to increase the (negative) gap between $\hat y_i - \hat y_c$ and `0` (when $i\ne c$). But that still means, if we add $\Delta$, there is the same chance for $x$ to result on the edge. </sub>
 
 <hr>
 </details>
