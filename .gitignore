@@ -17,3 +17,11 @@ assignment2/a2.zip
 assignment2/assignment.pdf
 
 # Assignment 3 generated
+assignment3/cs231n/datasets/coco_captioning
+assignment3/cs231n/datasets/MNIST_data/
+assignment3/cs231n/datasets/imagenet_val_25.npz
+assignment3/data
+assignment3/pretrained_model
+assignment3/results
+assignment3/a3_code_submission.zip
+assignment3/a3_inline_submission.pdf

@@ -4,7 +4,7 @@
 
 ## About
 ### Overview
-These are my solutions for the **CS231n** course assignments offered by Stanford University (Spring 2021). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
+These are my solutions for the **CS231n** course assignments offered by Stanford University (Spring 2021). Solutions work for further years like 2022. Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
 
 > Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. From what I checked, they contain more comprehensive explanations than others.
 
@@ -13,9 +13,6 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 * [**Assignments**](http://cs231n.stanford.edu/assignments.html)
 * [**Lecture notes**](https://cs231n.github.io/)
 * [**Lecture videos** (2017)](https://www.youtube.com/playlist?list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk)
-
-### Additional references (helper)
-* Additional references are yet to be added...
 
 <br>
 
@@ -38,9 +35,10 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 ### Assignment 3
 * [Q1](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs (_Done_)
 * [Q2](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers (_Done_)
-* [Q3](assignment3/Generative_Adversarial_Networks.ipynb): Generative Adversarial Networks (_Done_)
-
-> I will upload assignment 3 solutions soon!
+* [Q3](assignment3/Network_Visualization.ipynb): Network Visualization: Saliency Maps, Class Visualization, and Fooling Images (_Done_)
+* [Q4](assignment3/Generative_Adversarial_Networks.ipynb): Generative Adversarial Networks (_Done_)
+* [Q5](assignment3/Self_Supervised_Learning.ipynb): Self-Supervised Learning for Image Classification (_Done_)
+* [Q6](assignment3/LSTM_Captioning.ipynb): Image Captioning with LSTMs (_Done_)
 
 <br>
 
@@ -58,34 +56,34 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 <b>Your Answer</b>
 
 <hr>
-<p align="justify"><sub>First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\max(0,-)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\max(0,-)" title="\tiny \max(0,-)" /></a>. For <code>1D</code> case, we can define it as follows (<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\hat&space;y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\hat&space;y" title="\tiny \hat y" /></a> - score, <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;i" title="\tiny i" /></a> - any class, <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;c" title="\tiny c" /></a> - correct class, <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" title="\tiny \Delta" /></a> - margin):</sub></p>
+<sub><p align="justify">
+
+First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form $\max(0, -)$. For <code>1D</code> case, we can define it as follows ($\hat y$ - score, $i$ - any class, $c$ - correct class, $\Delta$ - margin):
     
-<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\bg_black&space;\small&space;f(x)=\max(0,&space;x),\&space;\text{where}\&space;x=\hat&space;y_{i}-\hat&space;y_c&plus;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bg_black&space;\small&space;f(x)=\max(0,&space;x),\&space;\text{where}\&space;x=\hat&space;y_{i}-\hat&space;y_c&plus;\Delta" title="\small f(x)=\max(0, x),\ \text{where}\ x=\hat y_{i}-\hat y_c+\Delta" /></a></p>
+$$f(x)=\max(0, x),\ \text{ where } x=\hat{y}_i-\hat{y}_c+\Delta$$
 
-<p align="justify"><sub>Let's now see how our <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\max" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\max" title="\tiny \max" /></a> function fits the definition of computing the gradient. It is the formula we use for computing the gradient <i>numerically</i> when, instead of implementing the limit approaching to $0$, we choose some arbitrary small <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;h" title="\tiny h" /></a>:</sub></p>
+Let's now see how our $\max$ function fits the definition of computing the gradient. It is the formula we use for computing the gradient <i>numerically</i> when, instead of implementing the limit approaching to $0$, we choose some arbitrary small $h$:
 
-<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\bg_black&space;\small&space;\frac{df(x)}{dx}=\lim_{h\to&space;0}\frac{\max(0,&space;x&plus;h)-\max(0,x)}{h}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\bg_black&space;\small&space;\frac{df(x)}{dx}=\lim_{h\to&space;0}\frac{\max(0,&space;x&plus;h)-\max(0,x)}{h}" title="\small \frac{df(x)}{dx}=\lim_{h\to 0}\frac{\max(0, x+h)-\max(0,x)}{h}" /></a></p>
+$$\frac{df(x)}{dx}=\lim_{h \to 0}\frac{\max(0,x+h)-\max(0,x)}{h}$$
 
-<p align="justify"><sub>Now we can talk about the possible mismatches between <i>numeric</i> and <i>analytic</i> gradient computation:</sub></p>
-<ol>
-    <sub><li><b>Cause of mismatch</b></li></sub>
-    <ul>
-        <li><p align="justify"><sub><i>Relative error</i> - the discrepancy is caused due to arbitrary choice of small values of <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;h" title="\tiny h" /></a> because by definition it should approach <code>0</code>.<i>Analytic</i> computation produces an exact result (as precise as computation precision allows) while <i>numeric</i> solution only approximates the result.</sub></p></li>
-        <li><p align="justify"><sub><i>Kinks</i> - <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\max" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\max" title="\tiny \max" /></a> only has a subgradient because when both values in $\max$ are equal, its gradient is undefined, therefore, not smooth. Such parts, referred to as <i>kinks</i>, may cause <i>numeric</i> gradient to produce different results from <i>analytic</i> computation due to (again) arbitrary choice of <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;h" title="\tiny h" /></a>.</sub></p></li>
-    </ul>
-    <sub><li><b>Concerns</b></li></sub>
-    <ul>
-        <li><p align="justify"><sub>When comparing <i>analytic</i> and <i>numeric</i> methods, <i>kinks</i> are more dangerous than small inaccuracies where the gradient is smooth. Small derivative inaccuracies still change the weight by approximately the same amount but <i>kinks</i> may cause unintentional updates as seen in an example below. If the unintentional values would have a noticable affect on parameter updates, it is a reason for concern.</sub></p></li>
-    </ul>
-    <sub><li><b><code>1D</code> example of numeric gradient fail</b></li></sub>
-    <ul>
-        <li><p align="justify"><sub>Assume <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;x=-10^{-9}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;x=-10^{-9}" title="\tiny x=-10^{-9}" /></a>. Then the <i>analytic</i> computation of the derivative of <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\max(0,&space;x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\max(0,&space;x)" title="\tiny \max(0, x)" /></a> would yield <code>0</code>. However, if we choose our <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;h=10^{-8}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;h=10^{-8}" title="\tiny h=10^{-8}" /></a>, then the <i>numeric</i> computation would yield <code>0.9</code>.</sub></p></li>
-    </ul>
-    <sub><li><b>Relation between margin and mismatch</b></li></sub>
-    <ul>
-        <li><p align="justify"><sub>Assuming all other parameters remain <b>unchanged</b>, increasing <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" title="\tiny \Delta" /></a> will lower the frequency of <i>kinks</i>. This is because higher <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" title="\tiny \Delta" /></a> will cause more <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;x" title="\tiny x" /></a> to be positive, thus reducing the probability of kinks. In reality though, it would not have a big effect - if we increase the margin <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" title="\tiny \Delta" /></a>, the <b>SVM</b> will only learn to increase the (negative) gap between <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\hat&space;y_i&space;-&space;\hat&space;y_c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\hat&space;y_i&space;-&space;\hat&space;y_c" title="\tiny \hat y_i - \hat y_c" /></a> and <code>0</code> (when <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;i\ne&space;c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;i\ne&space;c" title="\tiny i\ne c" /></a>). But that still means, if we add <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;\Delta" title="\tiny \Delta" /></a>, there is the same chance for <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\tiny&space;x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\tiny&space;x" title="\tiny x" /></a> to result on the edge.</sub></p></li>
-    </ul>
-</ol>
+Now we can talk about the possible mismatches between <i>numeric</i> and <i>analytic</i> gradient computation:
+
+1. <b>Cause of mismatch</b>
+    * <i>Relative error</i> - the discrepancy is caused due to arbitrary choice of small values of $h$ because by definition it should approach <code>0</code>.<i>Analytic</i> computation produces an exact result (as precise as computation precision allows) while <i>numeric</i> solution only approximates the result.
+
+    * <i>Kinks</i> - $\max$ only has a subgradient because when both values in $\max$ are equal, its gradient is undefined, therefore, not smooth. Such parts, referred to as <i>kinks</i>, may cause <i>numeric</i> gradient to produce different results from <i>analytic</i> computation due to (again) arbitrary choice of $h$.
+
+2. <b>Concerns</b>
+    * When comparing <i>analytic</i> and <i>numeric</i> methods, <i>kinks</i> are more dangerous than small inaccuracies where the gradient is smooth. Small derivative inaccuracies still change the weight by approximately the same amount but <i>kinks</i> may cause unintentional updates as seen in an example below. If the unintentional values would have a noticeable affect on parameter updates, it is a reason for concern.
+
+3. <b><code>1D</code> example of numeric gradient fail</b>
+    * Assume $x=-10^{-9}$. Then the <i>analytic</i> computation of the derivative of $\max(0, x)$ would yield <code>0</code>. However, if we choose our $h=10^{-8}$, then the <i>numeric</i> computation would yield <code>0.9</code>.
+
+4. <b>Relation between margin and mismatch</b></li></sub>
+    * Assuming all other parameters remain <b>unchanged</b>, increasing $\Delta$ will lower the frequency of <i>kinks</i>. This is because higher $\Delta$ will cause more $x$ to be positive, thus reducing the probability of kinks. In reality though, it would not have a big effect - if we increase the margin $\Delta$, the <b>SVM</b> will only learn to increase the (negative) gap between $\hat y_i - \hat y_c$ and <code>0</code> (when $i\ne c$). But that still means, if we add $\Delta$, there is the same chance for $x$ to result on the edge.
+
+</p></sub>
+
 <hr>
 </details>
 
