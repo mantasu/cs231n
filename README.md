@@ -58,7 +58,7 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 <hr>
 
 <sub>
-First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form $\max(0, -)$. For <code>1D</code> case, we can define it as follows ($\hat y$ - score, $i$ - any class, $c$ - correct class, $\Delta$ - margin):
+First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form $\max(0, -)$. For <code>1D</code> case, we can define it as follows ( $\hat{y}$ - score, $i$ - any class, $c$ - correct class, $\Delta$ - margin):
 </sub>
 
 <sub>
