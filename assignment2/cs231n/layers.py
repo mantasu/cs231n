@@ -619,14 +619,14 @@ def conv_backward_naive(dout, cache):
     P1 = P2 = P3 = P4 = conv_param['pad'] # padding: up = right = down = left
     F, C, HF, WF = w.shape                # filter dims
     N, _, HO, WO = dout.shape             # output dims
+    
+    dout = np.insert(dout, [*range(1, HO)] * (S1-1), 0, axis=2)         # "missing" rows
+    dout = np.insert(dout, [*range(1, WO)] * (S2-1), 0, axis=3)         # "missing" columns
+    dout_pad = np.pad(dout, ((0,), (0,), (HF-1,), (WF-1,)), 'constant') # for full convolution
 
-    dout = np.insert(dout, range(1, HO), [[0]]*(S1-1), axis=2) if S1 > 1 else dout # "missing" rows
-    dout = np.insert(dout, range(1, WO), [[0]]*(S2-1), axis=3) if S2 > 1 else dout # "missing" columns
-    dout_pad = np.pad(dout, ((0,), (0,), (HF-1,), (WF-1,)), 'constant')            # for full convolution
-
-    x_fields = to_fields(x_pad, (N, C, dout.shape[2], dout.shape[3]))              # input local regions w.r.t. dout
-    dout_fields = to_fields(dout_pad, (N, F, HF, WF))                              # dout local regions w.r.t. filter 
-    w_rot = np.rot90(w, 2, axes=(2, 3))                                            # rotated kernel (for convolution)
+    x_fields = to_fields(x_pad, (N, C, dout.shape[2], dout.shape[3]))   # input local regions w.r.t. dout
+    dout_fields = to_fields(dout_pad, (N, F, HF, WF))                   # dout local regions w.r.t. filter 
+    w_rot = np.rot90(w, 2, axes=(2, 3))                                 # rotated kernel (for convolution)
 
     db = np.einsum('ijkl->j', dout)                                                # sum over
     dw = np.einsum('ijkl,mnopiqkl->jqop', dout, x_fields)                          # correlate
