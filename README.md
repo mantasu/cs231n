@@ -1,12 +1,12 @@
 <h1 align="center">CS231n: Assignment Solutions</h1>
 <p align="center"><b>Convolutional Neural Networks for Visual Recognition</b></p>
-<p align="center"><i>Stanford - Spring 2021</i></p>
+<p align="center"><i>Stanford - Spring 2021-2023</i></p>
 
 ## About
 ### Overview
-These are my solutions for the **CS231n** course assignments offered by Stanford University (Spring 2021). Solutions work for further years like 2022. Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
+These are my solutions for the **CS231n** course assignments offered by Stanford University (Spring 2021). Solutions work for further years like 2022, 2023. Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
 
-> Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. From what I checked, they contain more comprehensive explanations than others.
+> Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. They contain more comprehensive explanations than others.
 
 ### Main sources (official)
 * [**Course page**](http://cs231n.stanford.edu/index.html)
@@ -42,7 +42,33 @@ These are my solutions for the **CS231n** course assignments offered by Stanford
 
 <br>
 
+## Running Locally
+
+It is advised to run in [Colab](https://colab.research.google.com/), however, you can also run locally. To do so, first, set up your environment - either through [conda](https://docs.conda.io/en/latest/) or [venv](https://docs.python.org/3/library/venv.html). It is advised to install [PyTorch](https://pytorch.org/get-started/locally/) in advance with GPU acceleration. Then, follow the steps:
+1. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Change every first code cell in `.ipynb` files to:
+   ```bash
+   %cd cs231n/datasets/
+   !bash get_datasets.sh
+   %cd ../../
+   ```
+3. Change the first code cell in section **Fast Layers** in [ConvolutionalNetworks.ipynb](assignment2/ConvolutionalNetworks.ipynb) to:
+   ```bash
+   %cd cs231n
+   !python setup.py build_ext --inplace
+   %cd ..
+   ```
+
+I've gathered all the requirements for all 3 assignments into one file [requirements.txt](requirements.txt) so there is no need to additionally install the requirements specified under each assignment folder. If you plan to complete [TensorFlow.ipynb](assignment2/TensorFlow.ipynb), then you also need to additionally install [Tensorflow](https://www.tensorflow.org/install).
+
+
+> **Note**: to use MPS acceleration via Apple M1, see the comment in [#4](https://github.com/mantasu/cs231n/issues/4#issuecomment-1492202538).
+
 ## Examples
+
 <details><summary><b>Inline question example</b></summary>
 <br>
 <b>Inline Question 1</b>

@@ -149,8 +149,8 @@ def svm_loss(x, y):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    N = len(y)      # number of samples
-    x_true = x[range(N), y][:, None]    # scores for true labels
+    N = len(y)                                # number of samples
+    x_true = x[range(N), y][:, None]          # scores for true labels
     margins = np.maximum(0, x - x_true + 1)   # margin for each score
     loss = margins.sum() / N - 1
     dx = (margins > 0).astype(float) / N
@@ -187,8 +187,8 @@ def softmax_loss(x, y):
 
     N = len(y) # number of samples
 
-    P = np.exp(x - x.max())              # numerically stable exponents
-    P /= P.sum(axis=1, keepdims=True)    # row-wise probabilities (softmax)
+    P = np.exp(x - x.max(axis=1, keepdims=True)) # numerically stable exponents
+    P /= P.sum(axis=1, keepdims=True)            # row-wise probabilities (softmax)
 
     loss = -np.log(P[range(N), y]).sum() / N # sum cross entropies as loss
 

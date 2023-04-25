@@ -1,0 +1,11 @@
+Cython
+tqdm
+h5py
+torch
+torchvision
+tabulate
+scipy
+pandas
+imageio
+matplotlib
+ipykernel

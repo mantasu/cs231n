@@ -12,6 +12,7 @@ assignment1/assignment.pdf
 
 # Assignment 2 generated
 assignment2/cs231n/build
+assignment2/cs231n/im2col_cython.cpython*
 assignment2/cs231n/datasets/cifar-10-batches-py
 assignment2/a2.zip
 assignment2/assignment.pdf

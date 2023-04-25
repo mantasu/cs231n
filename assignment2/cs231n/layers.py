@@ -394,11 +394,10 @@ def layernorm_forward(x, gamma, beta, ln_param):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    ln_param.setdefault('mode', 'train')       # same as batchnorm in train mode
-    ln_param.setdefault('axis', 1)             # over which axis to sum for grad
-    [gamma, beta] = np.atleast_2d(gamma, beta) # assure 2D to perform transpose
+    bn_param = {"mode": "train", "axis": 1, **ln_param} # same as batchnorm in train mode + over which axis to sum for grad
+    [gamma, beta] = np.atleast_2d(gamma, beta)          # assure 2D to perform transpose
 
-    out, cache = batchnorm_forward(x.T, gamma.T, beta.T, ln_param) # same as batchnorm
+    out, cache = batchnorm_forward(x.T, gamma.T, beta.T, bn_param) # same as batchnorm
     out = out.T                                                    # transpose back
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -836,14 +835,14 @@ def spatial_groupnorm_forward(x, gamma, beta, G, gn_param):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    N, C, H, W = x.shape                                      # input dims
-    gn_param.update({'shape':(W, H, C, N), 'axis':(0, 1, 3)}) # params to reuse batchnorm method
+    N, C, H, W = x.shape                                            # input dims
+    ln_param = {"shape":(W, H, C, N), "axis":(0, 1, 3), **gn_param} # params to reuse batchnorm method
     
     x = x.reshape(N*G, -1)                                    # reshape x to use vanilla layernorm
     gamma = np.tile(gamma, (N, 1, H, W)).reshape(N*G, -1)     # reshape gamma to use vanilla layernorm
     beta = np.tile(beta, (N, 1, H, W)).reshape(N*G, -1)       # reshape beta to use vanilla layernorm
 
-    out, cache = layernorm_forward(x, gamma, beta, gn_param)  # perform vanilla layernorm
+    out, cache = layernorm_forward(x, gamma, beta, ln_param)  # perform vanilla layernorm
     out = out.reshape(N, C, H, W)                             # reshape back the output
     cache = (G, cache)                                        # cache involves G
 
