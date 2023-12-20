@@ -266,7 +266,7 @@ class CaptioningRNN:
                 # If cell type is long short-term memory
                 h, c, _ = lstm_step_forward(x, h, c, Wx, Wh, b)
 
-            # Compue the final forward pass for t to get scores
+            # Compute the final forward pass for t to get scores
             out, _ = affine_forward(h, W_vocab, b_vocab)
             x = np.argmax(out, axis=1)
             captions[:, t] = x
