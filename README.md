@@ -1,10 +1,10 @@
 <h1 align="center">CS231n: Assignment Solutions</h1>
 <p align="center"><b>Convolutional Neural Networks for Visual Recognition</b></p>
-<p align="center"><i>Stanford - Spring 2021-2024</i></p>
+<p align="center"><i>Stanford - Spring 2021-2025</i></p>
 
 ## About
 ### Overview
-Solutions for **CS231n** course assignments offered by Stanford University (Spring 2021-2024). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
+Solutions for **CS231n** course assignments offered by Stanford University (Spring 2021-2025). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
 
 > Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. They contain more comprehensive explanations than others.
 
