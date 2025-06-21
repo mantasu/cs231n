@@ -4,7 +4,7 @@
 
 ## About
 ### Overview
-Solutions for **CS231n** course assignments offered by Stanford University (Spring 2021-2025). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I investigated, these should be the shortest code solutions (excluding open-ended challenges). In assignment 2, _DenseNet_ is used in _PyTorch_ notebook and _ResNet_ in _TensorFlow_ notebook. 
+Solutions for **CS231n** course assignments offered by Stanford University (Spring 2021-2025). Inline questions are explained in detail, the code is brief and commented (see examples below). From what I've checked, these are the shortest code solutions.
 
 > Check out the solutions for **[CS224n](https://github.com/mantasu/cs224n)**. They contain more comprehensive explanations than others.
 
@@ -18,27 +18,32 @@ Solutions for **CS231n** course assignments offered by Stanford University (Spri
 
 ## Solutions
 ### Assignment 1
-* [Q1](assignment1/knn.ipynb): k-Nearest Neighbor classifier. (_Done_)
-* [Q2](assignment1/svm.ipynb): Training a Support Vector Machine. (_Done_)
-* [Q3](assignment1/softmax.ipynb): Implement a Softmax classifier. (_Done_)
-* [Q4](assignment1/two_layer_net.ipynb): Two-Layer Neural Network. (_Done_)
-* [Q5](assignment1/features.ipynb): Higher Level Representations: Image Features. (_Done_)
+* [Q1](assignment1/knn.ipynb): k-Nearest Neighbor classifier
+* [Q2](assignment1/softmax.ipynb): Implement a Softmax classifier
+* [Q3](assignment1/two_layer_net.ipynb): Two-Layer Neural Network
+* [Q4](assignment1/features.ipynb): Higher Level Representations: Image Features
+* [Q5](assignment2/FullyConnectedNets.ipynb): Fully-connected Neural Network
 
 ### Assignment 2
-* [Q1](assignment2/FullyConnectedNets.ipynb): Fully-connected Neural Network. (_Done_)
-* [Q2](assignment2/BatchNormalization.ipynb): Batch Normalization. (_Done_)
-* [Q3](assignment2/Dropout.ipynb): Dropout. (_Done_)
-* [Q4](assignment2/ConvolutionalNetworks.ipynb): Convolutional Networks. (_Done_)
-* [Q5](assignment2/PyTorch.ipynb) _option 1_: PyTorch on CIFAR-10. (_Done_)
-* [Q5](assignment2/TensorFlow.ipynb) _option 2_: TensorFlow on CIFAR-10. (_Done_)
+
+* [Q1](assignment2/BatchNormalization.ipynb): Batch Normalization
+* [Q2](assignment2/Dropout.ipynb): Dropout
+* [Q3](assignment2/ConvolutionalNetworks.ipynb): Convolutional Networks
+* [Q4](assignment2/PyTorch.ipynb): PyTorch on CIFAR-10
+* [Q5](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs
 
 ### Assignment 3
-* [Q1](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs (_Done_)
-* [Q2](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers (_Done_)
-* [Q3](assignment3/Network_Visualization.ipynb): Network Visualization: Saliency Maps, Class Visualization, and Fooling Images (_Done_)
-* [Q4](assignment3/Generative_Adversarial_Networks.ipynb): Generative Adversarial Networks (_Done_)
-* [Q5](assignment3/Self_Supervised_Learning.ipynb): Self-Supervised Learning for Image Classification (_Done_)
-* [Q6](assignment3/LSTM_Captioning.ipynb): Image Captioning with LSTMs (_Done_)
+* [Q1](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers
+* [Q2](assignment3/Self_Supervised_Learning.ipynb): Self-Supervised Learning for Image Classification
+* [Q4](assignment3/DDPM.ipynb): Denoising Diffusion Probabilistic Models
+* [Q5](assignment3/CLIP_DINO.ipynb): CLIP and Dino
+
+### Previous Years
+* [A1](assignment1/svm.ipynb): Training a Support Vector Machine
+* [A2](assignment2/TensorFlow.ipynb): TensorFlow on CIFAR-10
+* [A3](assignment3/Network_Visualization.ipynb): Network Visualization: Saliency Maps, Class Visualization, and Fooling Images
+* [A3](assignment3/Generative_Adversarial_Networks.ipynb): Generative Adversarial Networks
+* [A3](assignment3/LSTM_Captioning.ipynb): Image Captioning with LSTMs
 
 <br>
 
@@ -65,7 +70,7 @@ It is advised to run in [Colab](https://colab.research.google.com/), however, yo
 I've gathered all the requirements for all 3 assignments into one file [requirements.txt](requirements.txt) so there is no need to additionally install the requirements specified under each assignment folder. If you plan to complete [TensorFlow.ipynb](assignment2/TensorFlow.ipynb), then you also need to additionally install [Tensorflow](https://www.tensorflow.org/install).
 
 
-> **Note**: to use MPS acceleration via Apple M1, see the comment in [#4](https://github.com/mantasu/cs231n/issues/4#issuecomment-1492202538).
+> **Note**: to use MPS acceleration via [Apple Metal](https://developer.apple.com/metal/), see the comment in [#4](https://github.com/mantasu/cs231n/issues/4#issuecomment-1492202538).
 
 ## Examples
 
@@ -73,15 +78,11 @@ I've gathered all the requirements for all 3 assignments into one file [requirem
 <br>
 <b>Inline Question 1</b>
 
-<hr>
-<p align="justify"><sub>It is possible that once in a while a dimension in the gradcheck will not match exactly. What could such a discrepancy be caused by? Is it a reason for concern? What is a simple example in one dimension where a gradient check could fail? How would change the margin affect of the frequency of this happening? <i>Hint: the SVM loss function is not strictly speaking differentiable</i></sub></p>
-<hr>
+<sub>It is possible that once in a while a dimension in the gradcheck will not match exactly. What could such a discrepancy be caused by? Is it a reason for concern? What is a simple example in one dimension where a gradient check could fail? How would change the margin affect of the frequency of this happening? <i>Hint: the SVM loss function is not strictly speaking differentiable</i></sub>
 
-<br>
+<hr><br>
 
 <b>Your Answer</b>
-
-<hr>
 
 <sub>
 First, we need to make some assumptions. To compute our <b>SVM loss</b>, we use <b>Hinge loss</b> which takes the form $\max(0, -)$. For <code>1D</code> case, we can define it as follows ( $\hat{y}$ - score, $i$ - any class, $c$ - correct class, $\Delta$ - margin):
@@ -113,7 +114,6 @@ Now we can talk about the possible mismatches between <i>numeric</i> and <i>anal
 4. <sub> **Relation between margin and mismatch** </sub>
     * <sub> Assuming all other parameters remain **unchanged**, increasing $\Delta$ will lower the frequency of _kinks_. This is because higher $\Delta$ will cause more $x$ to be positive, thus reducing the probability of kinks. In reality though, it would not have a big effect - if we increase the margin $\Delta$, the **SVM** will only learn to increase the (negative) gap between $\hat y_i - \hat y_c$ and `0` (when $i\ne c$). But that still means, if we add $\Delta$, there is the same chance for $x$ to result on the edge. </sub>
 
-<hr>
 </details>
 
 <details><summary><b>Python code example</b></summary>
