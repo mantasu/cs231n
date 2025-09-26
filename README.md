@@ -12,7 +12,7 @@ Solutions for **CS231n** course assignments offered by Stanford University (Spri
 * [**Course page**](http://cs231n.stanford.edu/index.html)
 * [**Assignments**](http://cs231n.stanford.edu/assignments.html)
 * [**Lecture notes**](https://cs231n.github.io/)
-* [**Lecture videos** (2017)](https://www.youtube.com/playlist?list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk)
+* [**Lecture videos** (2025)](https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16)
 
 <br>
 
@@ -33,6 +33,7 @@ Solutions for **CS231n** course assignments offered by Stanford University (Spri
 * [Q5](assignment3/RNN_Captioning.ipynb): Image Captioning with Vanilla RNNs
 
 ### Assignment 3
+> [Download Original](https://github.com/mantasu/cs231n/issues/16#issuecomment-3046063900)
 * [Q1](assignment3/Transformer_Captioning.ipynb): Image Captioning with Transformers
 * [Q2](assignment3/Self_Supervised_Learning.ipynb): Self-Supervised Learning for Image Classification
 * [Q4](assignment3/DDPM.ipynb): Denoising Diffusion Probabilistic Models
